@@ -1,45 +1,42 @@
-// cs159lab08
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <stdlib.h>
+#define CARD_MAX 52
+#define CARD_MIN 1
+#define ONE 1
 
 //Function Declaration
 
-int inputSeed (int number);
-void srand (unsigned int seed);
+void inputSeed (int* number); // Gets the input seed number from the user.
+
 
 int main (void)
 {
   //Local Declarations
-  
-  int number;
-  
+
+  int number; // Represents the input seed number from user.
+  int range; // Represents the formula of range formula for random numbers.
+
   //Executable Statements
-  
-  int inputSeed (&number);
+
+  inputSeed (&number);
   srand(number);
+
+  range = (CARD_MAX - CARD_MIN) + ONE; //Range formula for random numbers- see page 196 of book.
   
+  printf("%d", rand() % range + CARD_MIN); // I cannot get the 5th number to be between 1-52
+  printf("  %d", rand() % range + CARD_MIN);
+  printf("   %d", rand() % range + CARD_MIN);
+  printf("    %d", rand() % range + CARD_MIN);
+  printf("%d", rand() % range + CARD_MIN); // THIS NUMBER.
   return 0;
 }
 
 void inputSeed (int* number)
 {
-  printf("Enter value to seed random number generator: );
-  scanf("%d", &seed);
-  *number = seed;
-  return;
-}
-void srand (unsigned int seed);
-{
-//Local Declarations
-  int range;
-
-//Executable Statements
-  range = (52 - 1) - 1;
-  printf("%d", rand() % range + 1);
-  printf("%d", rand() % range + 1);
-  printf("%d", rand() % range + 1);
-  printf("%d", rand() % range + 1);
-  printf("%d", rand() % range + 1);
-  return 0;
+  //Executable Statements
+  
+  printf("Enter value to seed random number generator: ");
+  scanf("%d", number);
 }
